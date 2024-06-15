@@ -44,6 +44,8 @@ export async function editPost(formData: FormData, id: string) {
 			content: formData.get('content') as string
 		}
 	});
+
+	revalidatePath('/posts');
 }
 
 export async function deletePost(id: string) {
