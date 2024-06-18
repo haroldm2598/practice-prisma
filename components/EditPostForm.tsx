@@ -2,12 +2,7 @@
 import { FormEvent, useState } from 'react';
 import { editPost } from '@/actions/actions';
 import { revalidatePath } from 'next/cache';
-
-interface EditPostFormProps {
-	postId: string;
-	initialTitle: string;
-	initialContent: string;
-}
+import { EditPostFormProps } from '@/lib/definition';
 
 const EditPostForm: React.FC<EditPostFormProps> = ({
 	postId,

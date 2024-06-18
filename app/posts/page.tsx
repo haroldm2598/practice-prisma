@@ -15,7 +15,7 @@ export default async function PostsPage() {
 	});
 
 	return (
-		<main className='flex flex-col items-center gap-y-5 pt-24 text-center bg-slate-300'>
+		<main className='h-screen flex flex-col items-center gap-y-5 pt-24 text-center bg-slate-300'>
 			<h1 className='text-3xl font-semibold'>
 				All Posts ({user?.posts.length})
 			</h1>
@@ -23,10 +23,7 @@ export default async function PostsPage() {
 			<ul className='border-t border-b border-black/10 py-5 leading-8'>
 				{user?.posts.map((post) => {
 					return (
-						<li
-							key={post.id}
-							className='flex items-center justify-between px-5'
-						>
+						<li key={post.id} className='flex items-center px-5 gap-4 mb-2'>
 							<Link href={`/posts/${post.slug}`}>{post.title}</Link>
 							<DeleteBtn postId={post.id} />
 						</li>
@@ -40,12 +37,14 @@ export default async function PostsPage() {
 					name='title'
 					placeholder='Title'
 					className='px-2 py-1 rounded-sm'
+					required
 				/>
 				<textarea
 					name='content'
 					rows={5}
 					placeholder='Content'
 					className='px-2 py-1 rounded-sm'
+					required
 				/>
 				<button
 					type='submit'
@@ -60,7 +59,7 @@ export default async function PostsPage() {
 
 // PRISMA DB GUIDE
 // const posts = await prisma.post.findMany({
-// if only i want specific title
+// // if only i want specific title
 // 	where: {
 // 		title: {
 // 			endsWith: 'Posting'
@@ -69,13 +68,13 @@ export default async function PostsPage() {
 // 	orderBy: {
 // 		createAt: 'desc'
 // 	},
-// specific requirement only
+// // specific requirement only
 // 	select: {
 // 		id: true,
 // 		title: true,
 // 		slug: true
 // 	},
-// if i want pagination
+// // if i want pagination
 // skip: 10,
 // take: 10,
 // });
